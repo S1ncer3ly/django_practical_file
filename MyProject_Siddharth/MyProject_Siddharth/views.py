@@ -8,3 +8,7 @@ def greet(request):
 
 def home(request):
     return render(request, 'home.html')
+
+
+def child(request):
+    return render(request, 'child.html')
