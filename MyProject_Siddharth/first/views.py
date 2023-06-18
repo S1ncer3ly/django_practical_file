@@ -1,18 +1,14 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.http import HttpResponse
+
 from django.shortcuts import render
 from .form import MyForm
 
 
-def greet():
-    return HttpResponse("Hello There ! ")
-
-
 def home(request):
     return render(request, 'home.html')
-
-
-def child(request):
-    return render(request, 'child.html')
 
 
 def my_form_view(request):
@@ -31,3 +27,5 @@ def my_form_view(request):
         form = MyForm()
 
     return render(request, 'my_form.html', {'form': form})
+
+
