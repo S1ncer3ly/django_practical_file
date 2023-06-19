@@ -1,10 +1,9 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse
-
 from django.shortcuts import render
-from .form import MyForm
+from .forms import BookForm
+from .models import Book
+from django.shortcuts import redirect
 
 
 def home(request):
@@ -28,4 +27,24 @@ def my_form_view(request):
 
     return render(request, 'my_form.html', {'form': form})
 
+
+def add_book(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('book_list')  # Replace 'book_list' with the URL name of your book list view
+    else:
+        form = BookForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'first/book_form.html', context)
+
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'book_list.html', {'books': books})
 

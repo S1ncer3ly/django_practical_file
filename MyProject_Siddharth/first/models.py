@@ -1,5 +1,5 @@
-# Create your models here.
 from django.db import models
+from django import forms
 
 
 class Book(models.Model):
@@ -12,7 +12,8 @@ class Book(models.Model):
     Issued_Roll_No = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name_plural = 'Book'
+        verbose_name_plural = 'Books'
 
     def __str__(self):
         return self.Auth_first_name
+

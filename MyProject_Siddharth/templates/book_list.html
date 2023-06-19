@@ -1,0 +1,7 @@
+<h1>Book List</h1>
+<ul>
+    {% for book in books %}
+        <td>{{ book.Title }}</td>
+        <td>{{ book.Auth_first_name }}</td>
+    {% endfor %}
+</ul>
